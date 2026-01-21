@@ -1,46 +1,104 @@
 ---
 interface Props {
-  currentLang: 'es' | 'en';
+  currentLang: "es" | "en";
   t: Record<string, string>;
 }
 
 const { currentLang, t } = Astro.props;
 
-const nextLang = currentLang === 'es' ? 'en' : 'es';
-const nextLangLabel = currentLang === 'es' ? 'EN' : 'ES'; 
-const homeLink = currentLang === 'es' ? '/' : '/en';
-const toggleLink = currentLang === 'es' ? '/en' : '/';
+const nextLang = currentLang === "es" ? "en" : "es";
+const nextLangLabel = currentLang === "es" ? "EN" : "ES";
+const homeLink = currentLang === "es" ? "/" : "/en";
+const toggleLink = currentLang === "es" ? "/en" : "/";
 ---
+
 <header class="navbar">
   <div class="container navbar-inner">
-    <a href={homeLink} class="logo mono">
-      &lt;Dev /&gt;
-    </a>
-    
+    <a href={homeLink} class="logo mono"> &lt;Dev /&gt; </a>
+
     <nav class="nav-links">
       <ol>
-        <li><a href="#about" class="mono"><span class="nav-number">01.</span> {t['nav.about']}</a></li>
-        <li><a href="#experience" class="mono"><span class="nav-number">02.</span> {t['nav.experience']}</a></li>
-        <li><a href="#projects" class="mono"><span class="nav-number">03.</span> {t['nav.projects']}</a></li>
-        <li><a href="#contact" class="mono"><span class="nav-number">04.</span> {t['nav.contact']}</a></li>
+        <li>
+          <a href="#about" class="mono"
+            ><span class="nav-number">01.</span> {t["nav.about"]}</a
+          >
+        </li>
+        <li>
+          <a href="#experience" class="mono"
+            ><span class="nav-number">02.</span> {t["nav.experience"]}</a
+          >
+        </li>
+        <li>
+          <a href="#projects" class="mono"
+            ><span class="nav-number">03.</span> {t["nav.projects"]}</a
+          >
+        </li>
+        <li>
+          <a href="#contact" class="mono"
+            ><span class="nav-number">04.</span> {t["nav.contact"]}</a
+          >
+        </li>
       </ol>
-      <a href="https://github.com/Bymatt10" target="_blank" class="social-link" aria-label="GitHub">
-        <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github">
-          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 1.19 6.44 1.54A3.37 3.37 0 0 0 9 15.13V19"></path>
+      <a
+        href="https://github.com/Bymatt10"
+        target="_blank"
+        class="social-link"
+        aria-label="GitHub"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-github"
+        >
+          <path
+            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 1.19 6.44 1.54A3.37 3.37 0 0 0 9 15.13V19"
+          ></path>
         </svg>
       </a>
-      <a href="/resume.pdf" class="btn btn-small" target="_blank">{t['nav.cv']}</a>
+      <a href="/resume.pdf" class="btn btn-small" target="_blank"
+        >{t["nav.cv"]}</a
+      >
       <a href={toggleLink} class="lang-toggle mono">{nextLangLabel}</a>
     </nav>
 
-    <!-- Mobile Menu Toggle (Simplified for this version) -->
-    <div class="menu-toggle" aria-label="Menu">
+    <!-- Mobile Menu Toggle -->
+    <div class="menu-toggle" id="menu-toggle" aria-label="Menu">
       <span></span>
       <span></span>
       <span></span>
     </div>
   </div>
 </header>
+
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
+  const body = document.body;
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", () => {
+      menuToggle.classList.toggle("active");
+      navLinks.classList.toggle("active");
+      body.classList.toggle("menu-open");
+    });
+
+    // Close menu when a link is clicked
+    const links = navLinks.querySelectorAll("a");
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        menuToggle.classList.remove("active");
+        navLinks.classList.remove("active");
+        body.classList.remove("menu-open");
+      });
+    });
+  }
+</script>
 
 <style>
   .navbar {
@@ -102,7 +160,9 @@ const toggleLink = currentLang === 'es' ? '/en' : '/';
     color: var(--text-primary);
     width: 20px;
     height: 20px;
-    transition: color 0.2s, transform 0.2s;
+    transition:
+      color 0.2s,
+      transform 0.2s;
   }
 
   .social-link:hover {
@@ -114,7 +174,7 @@ const toggleLink = currentLang === 'es' ? '/en' : '/';
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
   }
-  
+
   .lang-toggle {
     font-size: 0.875rem;
     font-weight: 700;
@@ -126,28 +186,103 @@ const toggleLink = currentLang === 'es' ? '/en' : '/';
   }
 
   .lang-toggle:hover {
-     text-decoration: underline;
+    text-decoration: underline;
   }
 
   .menu-toggle {
     display: none;
+    z-index: 101;
+    transition: all 0.3s ease-in-out;
   }
 
   /* Mobile */
   @media (max-width: 768px) {
     .nav-links {
-      display: none; /* simple hidden for now, can enhance with JS sidebar */
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: min(75vw, 400px);
+      height: 100vh;
+      background-color: var(--bg-card);
+      flex-direction: column;
+      justify-content: center;
+      padding: 50px;
+      transition: all 0.3s ease-in-out;
+      box-shadow: -10px 0px 30px -15px rgba(2, 12, 27, 0.7);
+      z-index: 100;
     }
+
+    .nav-links.active {
+      right: 0;
+    }
+
+    .nav-links ol {
+      flex-direction: column;
+      gap: 2rem;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    .nav-links ol li a {
+      font-size: 1.25rem;
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+
+    .nav-links .nav-number {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .nav-links .social-link {
+      width: 32px;
+      height: 32px;
+      margin: 0 auto 1.5rem;
+      display: block;
+    }
+
+    .nav-links .btn-small {
+      font-size: 1.1rem;
+      padding: 0.75rem 2rem;
+      margin-bottom: 1rem;
+      display: block;
+      text-align: center;
+    }
+
+    .nav-links .lang-toggle {
+      margin-left: 0;
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      text-align: center;
+      display: block;
+    }
+
     .menu-toggle {
       display: flex;
       flex-direction: column;
       gap: 6px;
       cursor: pointer;
     }
+
     .menu-toggle span {
       width: 25px;
       height: 2px;
       background: var(--primary);
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* Hamburger Animation */
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
     }
   }
 </style>
