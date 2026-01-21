@@ -1,0 +1,68 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Portafolio de Matthew Reyes - Backend / Full Stack Software Engineer especializado en Java, Spring Boot y Microservicios." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		
+        <!-- Primary Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+        <meta name="keywords" content="Backend Developer, Java, Spring Boot, Microservicios, AWS, Docker, Kubernetes, Full Stack, Software Engineer, Matthew Reyes" />
+        <meta name="author" content="Matthew Reyes" />
+        <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={Astro.url} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content="/og-image.jpg" /> <!-- Agrega una imagen llamada og-image.jpg en public/ para mejor resultado -->
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={Astro.url} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+        <meta property="twitter:image" content="/og-image.jpg" />
+	</head>
+	<body>
+		<!-- Dynamic Background Elements -->
+		<div id="flashlight"></div>
+		<div class="bg-grid"></div>
+
+		<!-- Main Content -->
+		<slot />
+
+		<script>
+			// Flashlight effect
+			const flashlight = document.getElementById('flashlight');
+			
+			if (flashlight) {
+				document.addEventListener('mousemove', (e) => {
+					flashlight.style.left = `${e.clientX}px`;
+					flashlight.style.top = `${e.clientY}px`;
+					flashlight.style.opacity = '1';
+				});
+
+				// Hide on leaving window
+				document.addEventListener('mouseleave', () => {
+					flashlight.style.opacity = '0';
+				});
+			}
+		</script>
+	</body>
+</html>

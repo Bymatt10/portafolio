@@ -1,0 +1,41 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Hero from '../../components/Hero.astro';
+import Experience from '../../components/Experience.astro';
+import Projects from '../../components/Projects.astro';
+import Contact from '../../components/Contact.astro';
+import { ui, experienceData, projectsData } from '../../i18n/ui';
+
+const lang = 'en';
+const t = ui[lang];
+const jobs = experienceData[lang];
+const projects = projectsData[lang];
+---
+
+<Layout title="Matthew Reyes | Backend / Full Stack Software Engineer">
+	<Navbar currentLang={lang} t={t} />
+	<main>
+		<Hero t={t} />
+		<Experience t={t} jobs={jobs} />
+		<Projects t={t} projects={projects} />
+		<Contact t={t} />
+	</main>
+    
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="mono text-small">{t['footer.text']}</p>
+        </div>
+    </footer>
+</Layout>
+
+<style>
+    .footer {
+        padding: 2rem 0;
+        text-align: center;
+        color: var(--text-secondary);
+    }
+    .text-small {
+        font-size: 0.8rem;
+    }
+</style>

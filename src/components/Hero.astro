@@ -1,0 +1,65 @@
+---
+interface Props {
+  t: Record<string, string>;
+}
+
+const { t } = Astro.props;
+---
+<section class="container section hero" id="about">
+  <div class="hero-content">
+    <p class="mono greeting">{t['hero.greeting']}</p>
+    <h1 class="name">Matthew Reyes. <span class="text-gradient">{t['hero.role']}</span></h1>
+    <h2 class="subtitle">{t['hero.subtitle']}</h2>
+    <p class="description">
+      {t['hero.description']}
+    </p>
+    <div class="cta-group">
+      <a href="#experience" class="btn btn-primary">{t['hero.cta.experience']}</a>
+      <a href="#contact" class="btn">{t['hero.cta.contact']}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 90vh; /* Almost full screen */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: var(--header-height);
+  }
+
+  .greeting {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+
+  .name {
+    font-size: clamp(40px, 8vw, 70px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+  }
+
+  .subtitle {
+    font-size: clamp(30px, 6vw, 50px);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .description {
+    max-width: 600px;
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+  }
+
+  .cta-group {
+    display: flex;
+    gap: 1rem;
+  }
+</style>

@@ -1,0 +1,63 @@
+---
+import Card from './Card.astro';
+
+interface Project {
+  title: string;
+  description: string;
+  tags: string[];
+  href: string;
+}
+
+interface Props {
+  t: Record<string, string>;
+  projects: Project[];
+}
+
+const { t, projects } = Astro.props;
+---
+
+<section id="projects" class="container section">
+  <h2 class="section-title mono"><span class="number">03.</span> {t['projects.title']}</h2>
+  
+  <div class="projects-grid">
+    {projects.map((project) => (
+      <Card
+        title={project.title}
+        description={project.description}
+        tags={project.tags}
+        href={project.href}
+      />
+    ))}
+  </div>
+</section>
+
+<style>
+  .section-title {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .section-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--bg-card-hover);
+    margin-left: 1.5rem;
+    max-width: 300px;
+  }
+
+  .number {
+    color: var(--primary);
+    margin-right: 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+</style>

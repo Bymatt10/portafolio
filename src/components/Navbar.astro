@@ -1,0 +1,153 @@
+---
+interface Props {
+  currentLang: 'es' | 'en';
+  t: Record<string, string>;
+}
+
+const { currentLang, t } = Astro.props;
+
+const nextLang = currentLang === 'es' ? 'en' : 'es';
+const nextLangLabel = currentLang === 'es' ? 'EN' : 'ES'; 
+const homeLink = currentLang === 'es' ? '/' : '/en';
+const toggleLink = currentLang === 'es' ? '/en' : '/';
+---
+<header class="navbar">
+  <div class="container navbar-inner">
+    <a href={homeLink} class="logo mono">
+      &lt;Dev /&gt;
+    </a>
+    
+    <nav class="nav-links">
+      <ol>
+        <li><a href="#about" class="mono"><span class="nav-number">01.</span> {t['nav.about']}</a></li>
+        <li><a href="#experience" class="mono"><span class="nav-number">02.</span> {t['nav.experience']}</a></li>
+        <li><a href="#projects" class="mono"><span class="nav-number">03.</span> {t['nav.projects']}</a></li>
+        <li><a href="#contact" class="mono"><span class="nav-number">04.</span> {t['nav.contact']}</a></li>
+      </ol>
+      <a href="https://github.com/Bymatt10" target="_blank" class="social-link" aria-label="GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 1.19 6.44 1.54A3.37 3.37 0 0 0 9 15.13V19"></path>
+        </svg>
+      </a>
+      <a href="/resume.pdf" class="btn btn-small" target="_blank">{t['nav.cv']}</a>
+      <a href={toggleLink} class="lang-toggle mono">{nextLangLabel}</a>
+    </nav>
+
+    <!-- Mobile Menu Toggle (Simplified for this version) -->
+    <div class="menu-toggle" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    height: var(--header-height);
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    transition: transform 0.3s ease;
+  }
+
+  .navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    z-index: 101;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-links ol {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover {
+    color: var(--primary);
+  }
+
+  .nav-number {
+    color: var(--primary);
+    margin-right: 0.25rem;
+  }
+
+  .social-link {
+    color: var(--text-primary);
+    width: 20px;
+    height: 20px;
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  .social-link:hover {
+    color: var(--primary);
+    transform: translateY(-2px);
+  }
+
+  .btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .lang-toggle {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text-accent);
+    cursor: pointer;
+    text-decoration: none;
+    margin-left: 1rem;
+    padding: 0.5rem;
+  }
+
+  .lang-toggle:hover {
+     text-decoration: underline;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none; /* simple hidden for now, can enhance with JS sidebar */
+    }
+    .menu-toggle {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+    }
+    .menu-toggle span {
+      width: 25px;
+      height: 2px;
+      background: var(--primary);
+    }
+  }
+</style>

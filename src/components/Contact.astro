@@ -1,0 +1,75 @@
+---
+interface Props {
+  t: Record<string, string>;
+}
+
+const { t } = Astro.props;
+---
+
+<section id="contact" class="container section contact-section">
+  <p class="mono text-primary text-center">{t['contact.pretitle']}</p>
+  <h2 class="title text-center">{t['contact.title']}</h2>
+  <p class="description text-center">
+    {t['contact.description']}
+  </p>
+  
+  <div class="text-center cta-container">
+    <a href="mailto:matthewreyesvanegas46@gmail.com" class="btn btn-primary big-btn">{t['contact.cta']}</a>
+    <a href="https://github.com/Bymatt10" target="_blank" class="github-link mono">
+        {t['contact.github']} ↗
+    </a>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 100px 0;
+    text-align: center;
+  }
+
+  .text-primary {
+    color: var(--primary);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .title {
+    font-size: clamp(30px, 5vw, 50px);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  .description {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    margin-bottom: 3rem;
+  }
+
+  .big-btn {
+    padding: 1.25rem 3rem;
+    font-size: 1rem;
+  }
+
+  .cta-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+  }
+
+  .github-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      border-bottom: 1px solid transparent;
+      transition: all 0.2s;
+  }
+
+  .github-link:hover {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+  }
+</style>
