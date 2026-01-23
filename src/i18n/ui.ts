@@ -105,25 +105,25 @@ export const projectsData = {
             title: 'Arquitectura de Microservicios con Spring Boot',
             description: 'Implementación robusta de microservicios utilizando Java 17 y Spring Cloud. Comunicación asíncrona mediante Apache Kafka y orquestación de contenedores con Kubernetes.',
             tags: ['Java', 'Spring Boot', 'Kafka', 'K8s'],
-            href: 'https://github.com/Bymatt10'
+            href: 'https://github.com/Bymatt10/microservices-architecture'
         },
         {
             title: 'Cloud Native & DevOps Pipeline',
             description: 'Automatización completa de CI/CD utilizando Jenkins y GitHub Actions. Despliegue en AWS (EC2, S3, RDS) infraestructura como código y contenedores Docker.',
             tags: ['AWS', 'Docker', 'Jenkins', 'DevOps'],
-            href: 'https://github.com/Bymatt10'
+            href: 'https://github.com/Bymatt10/automated-devops-pipeline'
         },
         {
             title: 'Desarrollo Frontend SPA con Angular',
             description: 'Aplicaciones de una sola página (SPA) modernas y reactivas integradas con servicios backend RESTful. Gestión de estado y diseño responsivo.',
             tags: ['Angular', 'TypeScript', 'RxJS', 'HTML/CSS'],
-            href: 'https://github.com/Bymatt10'
+            href: 'https://github.com/Bymatt10/angular-modern-spa'
         },
         {
             title: 'Gestión de Datos & Analytics',
             description: 'Diseño e integración de bases de datos relacionales (MySQL, PostgreSQL) y NoSQL (MongoDB, Redis). Procesamiento de datos con AWS Athena.',
             tags: ['SQL', 'NoSQL', 'Redis', 'Athena'],
-            href: 'https://github.com/Bymatt10'
+            href: 'https://github.com/Bymatt10/iot-data-analytics'
         }
     ],
     en: [
@@ -131,25 +131,25 @@ export const projectsData = {
             title: 'Microservices Architecture with Spring Boot',
             description: 'Robust implementation of microservices using Java 17 and Spring Cloud. Asynchronous communication via Apache Kafka and container orchestration with Kubernetes.',
             tags: ['Java', 'Spring Boot', 'Kafka', 'K8s'],
-            href: 'https://github.com/Bymatt10'
+            href: 'https://github.com/Bymatt10/microservices-architecture'
         },
         {
             title: 'Cloud Native & DevOps Pipeline',
             description: 'Full CI/CD automation using Jenkins and GitHub Actions. Deployment on AWS (EC2, S3, RDS) infrastructure as code and Docker containers.',
             tags: ['AWS', 'Docker', 'Jenkins', 'DevOps'],
-            href: 'https://github.com/Bymatt10'
+            href: 'https://github.com/Bymatt10/automated-devops-pipeline'
         },
         {
             title: 'SPA Frontend Development with Angular',
             description: 'Modern and reactive Single Page Applications (SPA) integrated with RESTful backend services. State management and responsive design.',
             tags: ['Angular', 'TypeScript', 'RxJS', 'HTML/CSS'],
-            href: 'https://github.com/Bymatt10'
+            href: 'https://github.com/Bymatt10/angular-modern-spa'
         },
         {
             title: 'Data Management & Analytics',
             description: 'Design and integration of relational (MySQL, PostgreSQL) and NoSQL (MongoDB, Redis) databases. Data processing with AWS Athena.',
             tags: ['SQL', 'NoSQL', 'Redis', 'Athena'],
-            href: 'https://github.com/Bymatt10'
+            href: 'https://github.com/Bymatt10/iot-data-analytics'
         }
     ]
 };
